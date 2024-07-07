@@ -10,10 +10,10 @@ app.get("/", (_req, res) => {
     return res.send("Express Typescript on Vercel");
 });
 app.get("/ping", (_req, res) => {
-    return res.send("pong 🏓");
+    return res.send("pong");
 });
 app.get("/my", (_req, res) => {
-    return res.send("my 🏓");
+    return res.send("my");
 });
 app.listen(port, () => {
     return console.log(`Server is listening on ${port}`);
