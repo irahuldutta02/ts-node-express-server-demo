@@ -12,42 +12,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logout = exports.login = exports.signup = exports.getMe = void 0;
+exports.logout = exports.login = exports.signup = void 0;
 const prisma_1 = __importDefault(require("../db/prisma"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const generateToken_1 = require("../utils/generateToken");
-const getMe = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const user = yield prisma_1.default.user.findUnique({
-            where: { id: req.user.id },
-            select: {
-                id: true,
-                fullName: true,
-                username: true,
-                gender: true,
-                profilePic: true,
-            },
-        });
-        if (!user) {
-            return res.status(400).json({
-                status: 400,
-                message: "User not found",
-            });
-        }
-        return res.status(200).json({
-            status: 200,
-            data: user,
-        });
-    }
-    catch (error) {
-        console.error("Error in getMe : ", error.message);
-        return res.status(500).json({
-            status: 500,
-            message: error.message || "Internal Server Error",
-        });
-    }
-});
-exports.getMe = getMe;
+// export const getMe = async (req: Request, res: Response) => {
+//   try {
+//     const user = await prisma.user.findUnique({
+//       where: { id: req.user.id },
+//       select: {
+//         id: true,
+//         fullName: true,
+//         username: true,
+//         gender: true,
+//         profilePic: true,
+//       },
+//     });
+//     if (!user) {
+//       return res.status(400).json({
+//         status: 400,
+//         message: "User not found",
+//       });
+//     }
+//     return res.status(200).json({
+//       status: 200,
+//       data: user,
+//     });
+//   } catch (error: any) {
+//     console.error("Error in getMe : ", error.message);
+//     return res.status(500).json({
+//       status: 500,
+//       message: error.message || "Internal Server Error",
+//     });
+//   }
+// };
 const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { fullName, username, password, confirmPassword, gender } = req.body;
