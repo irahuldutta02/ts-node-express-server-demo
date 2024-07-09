@@ -7,17 +7,20 @@ const express_1 = __importDefault(require("express"));
 const server_config_1 = require("./config/server.config");
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const message_routes_1 = __importDefault(require("./routes/message.routes"));
-const cors_1 = __importDefault(require("cors"));
+// import cookieParser from "cookie-parser";
+// import cors from "cors";
 const app = (0, express_1.default)();
 // app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.text());
 // app.use(cookieParser());
-app.use((0, cors_1.default)({
-    origin: true,
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    credentials: true,
-}));
+// app.use(
+//   cors({
+//     origin: true,
+//     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
 app.get("/", (req, res) => {
     return res.status(200).json({
         status: 200,
