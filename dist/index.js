@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const server_config_1 = require("./config/server.config");
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
-// import messageRouter from "./routes/message.routes";
+const message_routes_1 = __importDefault(require("./routes/message.routes"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
     });
 });
 app.use("/api/auth", auth_routes_1.default);
-// app.use("/api/messages", messageRouter);
+app.use("/api/messages", message_routes_1.default);
 app.listen(server_config_1.PORT, () => {
     console.log(`Server is running on port ${server_config_1.PORT}`);
 });
